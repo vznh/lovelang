@@ -11,6 +11,7 @@
         <p id="botStarterMessage">Hi, how can I help you?</p>
     </div>
     <input id="textInput" type="text" name="msg" placeholder="Type your message here..." />
+<<<<<<< Updated upstream
     <input type="button" value="Send" onclick="getBotResponse()" />
     <script>
         function getBotResponse() {
@@ -25,6 +26,31 @@
         }
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+=======
+    <input type="button" value="Send" class="btn" onclick="getBotResponse()" />
+
+    <button id="recordButton" class="btn"><i class="fa-solid fa-microphone"></i> Record</button>
+
+  </div>
+  <script>
+    function getBotResponse() {
+      var rawText = $("#textInput").val();
+      var userHtml = '<p class="userResponse">' + rawText + '</p>';
+      $("#chatbox").append(userHtml);
+      $.get("/get", { msg: rawText }).done(function(data) {
+        var botHtml = '<p class="botResponse">' + data + '</p>';
+        $("#chatbox").append(botHtml);
+        document.getElementById('textInput').value = '';
+      });
+    }
+
+    function handleMicClick() {
+      // Code to handle microphone button click
+    }
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</div>
+>>>>>>> Stashed changes
 </body>
 </html>
 
