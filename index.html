@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>welcome</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>welcome to</h2>
+    <h1>lovelang</h1>
+    <p><span id="helloText"></span>, {{name}}, ready to learn</p>
+    <a class="btn" href="/init.html">lets go</a>
+  </div>
+
+  <script>
+    // JavaScript code to update the helloText element with the rotating "hello" values
+    const helloText = document.getElementById('helloText');
+    const languages = ['Hello', 'Hola', 'Bonjour', '你好', '안녕하세요'];
+    let index = 0;
+
+    setInterval(() => {
+      helloText.textContent = languages[index];
+      index = (index + 1) % languages.length;
+    }, 1000);
+  </script>
+</body>
+</html>
+
+<script src="https://kit.fontawesome.com/c6fae16368.js" crossorigin="anonymous"></script>
