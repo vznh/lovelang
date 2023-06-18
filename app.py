@@ -233,7 +233,6 @@ def speak_syllable_by_syllable(lang: str, sentence: str) -> None:
         if word_has_valid_syllable:  # Only increment word counter if word had at least one valid syllable
             i += 1
 
-
     # Initialize pygame
     pygame.mixer.init()
 
@@ -247,10 +246,7 @@ def speak_syllable_by_syllable(lang: str, sentence: str) -> None:
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy() == True:
             continue
-            os.remove(filename)
-
-
-    
+            os.remove(filename)    
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
