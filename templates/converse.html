@@ -3,101 +3,25 @@
 <head>
   <title>Chat Box UI</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-  <style>
-    /* Global styling */
-    body {
-      font-family: Arial, sans-serif;
-    }
-    
-    /* Chat box UI */
-    .chat-container {
-      max-width: 400px;
-      margin: 20px auto;
-      background-color: #f1f1f1;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .chat-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    
-    .chat-header h2 {
-      margin: 0;
-      font-size: 18px;
-    }
-    
-    .chat-messages {
-      max-height: 300px;
-      overflow-y: auto;
-      margin-bottom: 20px;
-      padding-right: 10px;
-    }
-    
-    .chat-messages .message {
-      margin-bottom: 10px;
-    }
-    
-    .chat-messages .message .user {
-      font-weight: bold;
-      margin-right: 5px;
-    }
-    
-    .chat-messages .message .text {
-      display: inline-block;
-      background-color: #fff;
-      border-radius: 5px;
-      padding: 5px 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    
-    .chat-input {
-      display: flex;
-      margin-top: 10px;
-    }
-    
-    .chat-input input[type="text"] {
-      flex: 1;
-      border: none;
-      border-radius: 5px 0 0 5px;
-      padding: 8px;
-    }
-    
-    .chat-input button {
-      border: none;
-      background-color: #4CAF50;
-      color: #fff;
-      border-radius: 0 5px 5px 0;
-      padding: 8px 16px;
-      cursor: pointer;
-    }
-  </style>
-</head>
 <body>
-  <div class="chat-container">
-    <div class="chat-header">
-      <h2>Chat</h2>
-      <button>Close</button>
+  <h1>Chat with GPT-3</h1>
+    <div id="chatbox">
+        <p id="botStarterMessage">Hi, how can I help you?</p>
     </div>
-    <div class="chat-messages">
-      <div class="message">
-        <span class="user">John:</span>
-        <span class="text">Hello, how can I help you?</span>
-      </div>
-      <div class="message">
-        <span class="user">Jane:</span>
-        <span class="text">I have a question about your product.</span>
-      </div>
-      <!-- Add more chat messages here -->
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Type your message...">
-      <button>Send</button>
-    </div>
-  </div>
+    <input id="textInput" type="text" name="msg" placeholder="Type your message here..." />
+    <input type="button" value="Send" onclick="getBotResponse()" />
+    <script>
+        function getBotResponse() {
+            var rawText = $("#textInput").val();
+            var userHtml = '<p class="userResponse">' + rawText + '</p>';
+            $("#chatbox").append(userHtml);
+            $.get("/get", { msg: rawText }).done(function(data) {
+                var botHtml = '<p class="botResponse">' + data + '</p>';
+                $("#chatbox").append(botHtml);
+                document.getElementById('textInput').value = '';
+            });
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 </html>

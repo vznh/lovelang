@@ -18,13 +18,29 @@ mongo = PyMongo(app)
 def index():
     return render_template('index.html')
 
+@app.route('/init')
+def initialization():
+    return render_template('init.html')
+
+@app.route('/picksubject')
+def picksubject_render():
+    return render_template('picksubject.html')
+
+@app.route('/converse')
+def converse_render():
+    return render_template('converse.html')
+
+@app.route('/modules')
+def modules_render():
+    return render_template('modules.html')
+
 @app.route( '/welcome/<name>' )
 def welcome(name):
     return render_template('index.html',name=name)
 
-@app.route( '/practice/<name>/<language>' )
-def practice_page_render(name, language):
-    return render_template('practice.html', name=name, language=language)
+@app.route( '/practice' )
+def practice_page_render():
+    return render_template('practice.html')
 
 def generate_text():
     """Generates text from the completion endpoint. Retains message history."""
