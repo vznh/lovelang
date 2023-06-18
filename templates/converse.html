@@ -3,25 +3,103 @@
 <head>
   <title>Chat Box UI</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
-  <h1>Chat with GPT-3</h1>
-    <div id="chatbox">
-        <p id="botStarterMessage">Hi, how can I help you?</p>
-    </div>
-    <input id="textInput" type="text" name="msg" placeholder="Type your message here..." />
-    <input type="button" value="Send" onclick="getBotResponse()" />
-    <script>
-        function getBotResponse() {
-            var rawText = $("#textInput").val();
-            var userHtml = '<p class="userResponse">' + rawText + '</p>';
-            $("#chatbox").append(userHtml);
-            $.get("/get", { msg: rawText }).done(function(data) {
-                var botHtml = '<p class="botResponse">' + data + '</p>';
-                $("#chatbox").append(botHtml);
-                document.getElementById('textInput').value = '';
-            });
-        }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <a class="btn" href="/picksubject/korean>"><i class="fa-sharp fa-regular fa-arrow-left"></i> back</a>
+
+
+<div class="container">
+  <h1>lets chat</h1>
+
+  <!--not talking-->
+  <img src="{{ url_for('static', filename='imgs/idle.jpg') }}" alt="NOT" style="width: 35%;">
+
+  <!--repeat button-->
+  <div class="repeat-button">
+    <a class="btn" href="#" onclick="handleRepeatClick()"><i class="fa-solid fa-repeat"></i> repeat</a>
+    <a class="btn" href="#" onclick="handleTranslateClick(event)"><i class="fa-regular fa-language"></i> translate</a>
+
+  </div>
+
+  <div id="chatbox">
+    <p id="botStarterMessage">Hi, how can I help you?</p>
+  </div>
+  <div class="input-container">
+    <button type="button" class="btn" onclick="handleMicClick()"><i class="fa-solid fa-microphone"></i></button>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</script>
+
+</div>
 </body>
 </html>
+<foot>
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
+  <script>
+    let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let recorder;
+    let recording = false;
+    let audioPlayer = new Audio(); // This will be our audio player
+    let lastAudioUrl;
+    
+    function handleMicClick() {
+      console.log("handleMicClick called. Recording state: " + recording);
+      if (recording) {
+        stopRecording();
+        recording = false;
+      } else {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: false })
+          .then(function(stream) {
+            let input = audioContext.createMediaStreamSource(stream);
+            recorder = new Recorder(input);
+            recorder.record();
+          })
+          .catch(function(err) {
+            console.log('The following error occurred: ' + err);
+          });
+        recording = true;
+      }
+    }
+    
+    function stopRecording() {
+      console.log("handleMicClick called. Recording state: " + recording);
+      if (recorder) {
+        recorder.stop();
+
+        recorder.exportWAV(function(blob) {
+          let formData = new FormData();
+          formData.append('audio', blob);
+
+          fetch('/picksubject/korean/converse', {
+            method: 'POST',
+            body: formData
+          }).then(response => response.json())
+            .then(data => {
+              lastAudioUrl = data.audio_url; // Save the audio url
+              audioPlayer.src = lastAudioUrl; // Update the source of the audio player
+              audioPlayer.play(); // Play the audio
+            });
+
+          recorder.clear();
+        });
+      }
+    }
+    function handleRepeatClick(event) {
+      event.preventDefault(); // Prevent the default action
+      audioPlayer.src="get_audio/sentence.wav";
+      audioPlayer.play();
+    }  // Variable to store the URL of the translated audio
+
+    function handleTranslateClick(event) {
+      event.preventDefault(); // Prevent the default action
+      
+      // Set the source of the audio player to the URL of the translated audio file
+      audioPlayer.src = 'get_audio/sentenceTranslation.wav';  // Replace with the correct path
+      audioPlayer.play();  // Play the translated audio
+    }
+
+  </script>
+  </foot>
+  
+
+<script src="https://kit.fontawesome.com/c6fae16368.js" crossorigin="anonymous"></script>

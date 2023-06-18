@@ -3,13 +3,32 @@
   <head>
   <title>practice</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-
+  <style>
+    .key {
+      font-size: 24px;  /* adjust as necessary */
+    }
+    .value {
+      font-size: 18px;  /* adjust as necessary */
+    }
+  </style>
 </head>
 <body>
+  <div id="content">
+    {% for key, value in syllables_dict.items() %}
+      <div class="key">{{ key }}</div>
+      <div class="value">{{ value }}</div>
+    {% endfor %}
+  </div>
+
   <a class="btn" href="/picksubject"><i class="fa-sharp fa-regular fa-arrow-left"></i></a>
 
     <div class="container">
-        <h2>practice {{ lang }}</h2>
+      <div id="content">
+        {% for key, value in syllables_dict.items() %}
+          <div class="key">{{ key }}</div>
+          <div class="value">{{ value }}</div>
+        {% endfor %}
+      </div>
     </div>
 </body>
 </html>
