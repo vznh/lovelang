@@ -5,10 +5,8 @@
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
   <script src="https://kit.fontawesome.com/c6fae16368.js" crossorigin="anonymous"></script>
   <script>
-    function addLanguageToURL(language) {
-      var currentURL = window.location.href;
-      var separator = currentURL.includes('?') ? '&' : '?';
-      var newURL = currentURL + separator + 'language=' + language;
+    function addLanguageToURL(language, link) {
+      var newURL = link + '/' + language.toLowerCase();
       window.location.href = newURL;
     }
   </script>
@@ -17,10 +15,10 @@
   <a class="btn" href="/"><i class="fa-sharp fa-regular fa-arrow-left"></i></a>
   <div class="container">
     <h2>Which language do you want to learn?</h2>
-    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Spanish')">Spanish</a>
-    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Mandarin')">Mandarin</a>
-    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Korean')">Korean</a>
-    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Japanese')">Japanese</a>
+    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Spanish', '/picksubject')">Spanish</a>
+    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Mandarin', '/picksubject')">Mandarin</a>
+    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Korean', '/picksubject')">Korean</a>
+    <a class="btn" href="javascript:void(0);" onclick="addLanguageToURL('Japanese', '/picksubject')">Japanese</a>
   </div>
 </body>
 </html>
