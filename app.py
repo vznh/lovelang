@@ -194,7 +194,7 @@ def speak_syllable_by_syllable(lang: str, sentence: str) -> None:
     "Spanish": "es_ES"
     }
     
-    arr: list = requestGPT(sentence, 2)
+    arr: list = requestGPT(sentence, 1)
     print(arr)
     
     client = texttospeech.TextToSpeechClient()
@@ -252,4 +252,5 @@ def speak_syllable_by_syllable(lang: str, sentence: str) -> None:
         os.remove(f"syllables/{file}")
 
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    speak_syllable_by_syllable("Korean", "안녕하세요")
+  #  app.run(port=5000, debug=True)
