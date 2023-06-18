@@ -13,21 +13,15 @@
   </style>
 </head>
 <body>
-  <div id="content">
-    {% for key, value in syllables_dict.items() %}
-      <div class="key">{{ key }}</div>
-      <div class="value">{{ value }}</div>
-    {% endfor %}
-  </div>
 
   <a class="btn" href="/picksubject"><i class="fa-sharp fa-regular fa-arrow-left"></i></a>
 
     <div class="container">
       <div id="content">
-        {% for key, value in syllables_dict.items() %}
-          <div class="key">{{ key }}</div>
-          <div class="value">{{ value }}</div>
-        {% endfor %}
+          {% for key, value in syllables_dict.items() %}
+            <div class="syllable">{{ key }}</div>
+            <div class="tip">{{ value|safe }}</div>
+          {% endfor %}
       </div>
     </div>
 </body>

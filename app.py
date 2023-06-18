@@ -157,7 +157,9 @@ Here's your first one (REMEMBER TO ONLY REPLY IN THE ARRAY):
                 max_tokens=250,
             )
 
-            return res
+            res=str(response["choices"][0]["message"])
+            final = json.loads(res)
+            return final
         
     return "GPT is not accessible at this time."
 
@@ -297,4 +299,4 @@ def get_syllables(lang: str, sentence: str) -> list:
     requestGPT(sentence,0)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
