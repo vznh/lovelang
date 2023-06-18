@@ -1,5 +1,8 @@
 # attempt to connect python function to mongodb database and add/access items to the database
 
+'''to clean up the code, i'm planning to turn the adding feature and accessing feature into 2 separate functions.
+what i have here right now is just to test with a sample database'''
+
 from pymongo import MongoClient
 client = MongoClient('mongodb+srv://userhack:ZPO4BzbPYQvRFhf7@hackathoncluster.ljjbuhm.mongodb.net/')
 
