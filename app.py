@@ -6,6 +6,8 @@ import openai
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
+
+
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = 'cred.json'

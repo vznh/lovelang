@@ -3,28 +3,48 @@
 <head>
   <title>Chat Box UI</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
 <body>
     <a class="btn" href="/picksubject/<lang>"><i class="fa-sharp fa-regular fa-arrow-left"></i> back</a>
 
-  <h1>Chat with GPT-3</h1>
-    <div id="chatbox">
-        <p id="botStarterMessage">Hi, how can I help you?</p>
-    </div>
+<div class="container">
+  <h1>lets chat</h1>
+
+  <!--not talking-->
+  <img src="{{ url_for('static', filename='imgs/isntTalking.jpeg') }}" alt="NOT" style="width: 35%;">
+
+  <!--repeat button-->
+  <div class="repeat-button">
+    <a class="btn" href="#"><i class="fa-solid fa-repeat"></i> repeat</a>
+    <a class="btn" href="#"><i class="fa-regular fa-language"></i> translate</a>
+  </div>
+  
+  <div id="chatbox">
+    <p id="botStarterMessage">Hi, how can I help you?</p>
+  </div>
+  <div class="input-container">
     <input id="textInput" type="text" name="msg" placeholder="Type your message here..." />
-    <input type="button" value="Send" onclick="getBotResponse()" />
-    <script>
-        function getBotResponse() {
-            var rawText = $("#textInput").val();
-            var userHtml = '<p class="userResponse">' + rawText + '</p>';
-            $("#chatbox").append(userHtml);
-            $.get("/get", { msg: rawText }).done(function(data) {
-                var botHtml = '<p class="botResponse">' + data + '</p>';
-                $("#chatbox").append(botHtml);
-                document.getElementById('textInput').value = '';
-            });
-        }
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <input type="button" value="Send" class="btn" onclick="getBotResponse()" />
+    <button type="button" class="btn" onclick="handleMicClick()"><i class="fa-solid fa-microphone"></i></button>
+  </div>
+  <script>
+    function getBotResponse() {
+      var rawText = $("#textInput").val();
+      var userHtml = '<p class="userResponse">' + rawText + '</p>';
+      $("#chatbox").append(userHtml);
+      $.get("/get", { msg: rawText }).done(function(data) {
+        var botHtml = '<p class="botResponse">' + data + '</p>';
+        $("#chatbox").append(botHtml);
+        document.getElementById('textInput').value = '';
+      });
+    }
+
+    function handleMicClick() {
+      // Code to handle microphone button click
+    }
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</div>
 </body>
 </html>
 
