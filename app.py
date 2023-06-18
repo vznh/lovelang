@@ -43,12 +43,13 @@ From now on, when I ask for a word in any language, return its syllables to help
 an array supporting Python that has the syllables such as:
 bibimbap (비빔밥) be-bim-bap
 -> { "be": "Pronounced such as the sentence 'to be'", "bim": "rhyme of dim", "bap": "bab"}
-When returning a value, could you also give helpful guides on how to say the syllable in the value portion of the dict? 
+When returning a value, could you give helpful guides on how to say the syllable in the value portion of the dict such as
+how consonants sound and how vowels sound?
 
 I will request data like:
 language word
 
-So an example call  to you would be:
+So an example call to you would be:
 Korean 안녕
 
 The ideal response is just a dictionary in this format. Don't say anything else.
@@ -56,7 +57,7 @@ The ideal response is just a dictionary in this format. Don't say anything else.
 {syllable: helpful tips to pronounce the word}
 """)
         case 1: # conversational bot
-            session['history'].append("""You are an avid individual who loves learning languages -- you have knowledge about every language in existence, except for the extinct ones of course. If I do not respond in a correct language, or if you just don't understand my response because it's too vague, respond with 'What did you say?' in the respective language. Your job is to practice with me to speak. Do not start until I say 'Hello' to you -- when I say hello, begin a beginner-level conversation from easy terms in a language that I prefer, then gradually (very slowly) increase in difficulty. For this conversation, let's start with {}.""").format(language)
+            session['history'].append("""You are an avid individual who loves learning languages -- you have knowledge about every language in existence, except for the extinct ones of course. If I do not respond in a correct language, or if you just don't understand my response because it's too vague, respond with 'What did you say?' in the respective language. Your job is to practice with me to speak. Do not start until I say 'Hello' to you -- when I say hello, begin a beginner-level conversation from easy terms in a language that I prefer, then gradually (very slowly) increase in difficulty. For this conversation, let's start with {}. Please ALWAYS respond to me in 1 to 2 sentences as if you are a native speaker.""").format(language)
             user_input = 
     # Append the user's input to the conversation history
     user_input = request.json['prompt']
