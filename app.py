@@ -82,7 +82,40 @@ The ideal response is just a dictionary in this format. Don't say anything else.
 
     return jsonify({'text': generated_text})
 
+def listen_for_audio( lang: str, matching: str ) -> bool:
+    '''
+    Args:
+        lang: language to listen for
+        matching: the matching string to compare to
+    Returns:
+        true if the matching string is said, false otherwise
 
+    example call
+    listen_for_audio("Korean", "안녕")
+    '''
+    import speech_recognition as sr
+    legend= {
+    "English": "en_GB",
+    "Korean": "ko_KR",
+    "Japanese": "ja_JP",
+    "Mandarin": "zh_CN",
+    "Spanish": "es_ES"
+    }
+    lang=lang.capitalize()
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        audio = r.listen(source, phrase_time_limit=7.5)  # Set a time limit for each phrase
+        print("Stopped listening.")
+
+    try:
+        text = r.recognize_google(audio, language=legend[lang])  # Use 'zh-CN' for Mandarin
+        print("You said : {}".format(text))
+    except:
+        print("Sorry, I didn't get that.")
+    else:
+        return True if (matching==text) else False
+    
 def setup_curriculum(language: str, curriculum: dict, level: int) -> set:
     from random import choice
     """Sets up the curriculum for the given language.
