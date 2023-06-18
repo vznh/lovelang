@@ -3,15 +3,16 @@
 <head>
   <title>welcome</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <h2>welcome to</h2>
 
     <h3 class="animate-charcter">lovelang</h3>
-    
-    <p><span id="helloText"></span>, {{name}}, ready to learn</p>
-    <a class="btn" href="/init">lets go</a>
+    <p>a new way to master languages with ai</p>
+    <p><span id="helloText"></span>! ready to learn?</p>
+    <a class="btn" href="/init">lets go <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
   <script>

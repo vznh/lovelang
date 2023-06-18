@@ -3,6 +3,8 @@
 <head>
   <title>menu</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
+
   <style>
     /* Basic styling for the menu */
     body {
@@ -81,7 +83,14 @@
   </style>
 </head>
 <body>
-  <a class="btn" href="/picksubject/<lang>"><i class="fa-sharp fa-regular fa-arrow-left"></i> back</a>
+  <nav>
+    <div class="left-side">
+      <a class="btn" href="/"><i class="fa-sharp fa-regular fa-arrow-left"></i> back</a>
+    </div>
+    <div class="right-side">
+      <p2 class="animate-charcter">lovelang</p2>
+    </div>
+  </nav>
     <nav class="menu">
     <ul>
       <li>

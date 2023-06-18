@@ -1,67 +1,105 @@
 body {
-    background-color: #f2f2f2;
-    font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 750px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h3 {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 100px;
+
+}
+
+p2 {
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  color: #777;
+  animation: slotMachine 4s infinite;
+}
+
+@keyframes slotMachine {
+  0% {
+    content: "Hello";
   }
 
-  .container {
-    width: 750px;
-    margin: 100px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  25% {
+    content: "¡Hola!";
   }
 
-  h1 {
-    color: #333;
+  50% {
+    content: "Bonjour";
   }
 
-  p {
-    color: #777;
-    animation: slotMachine 4s infinite;
+  75% {
+    content: "你好";
   }
 
-  @keyframes slotMachine {
-    0% {
-      content: "Hello";
-    }
-
-    25% {
-      content: "¡Hola!";
-    }
-
-    50% {
-      content: "Bonjour";
-    }
-
-    75% {
-      content: "你好";
-    }
-
-    100% {
-      content: "안녕하세요";
-    }
+  100% {
+    content: "안녕하세요";
   }
+}
 
-  .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-right: 10px;
-    background-color: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
+nav {
+  background-color: #fff;
+  overflow: auto; /* Clear floats */
+  padding: 10px;
+}
+
+.left-side {
+  float: left;
+}
+
+.right-side {
+  float: right;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: 200% auto;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  animation: backgroundclip 2s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes backgroundclip {
+  to {
+    background-position: 200% center;
   }
+}
 
-  .btn:hover {
-    background-color: #0056b3;
-  }
+.btn:hover {
+  background-position: 100% center;
+  animation-play-state: running;
+}
 
-  .animate-charcter
-{
-   text-transform: uppercase;
+.animate-charcter {
   background-image: linear-gradient(
     -225deg,
     #231557 0%,
@@ -79,7 +117,6 @@ body {
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
   display: inline-block;
-      font-size: 50px;
 }
 
 @keyframes textclip {
@@ -87,3 +124,4 @@ body {
     background-position: 200% center;
   }
 }
+

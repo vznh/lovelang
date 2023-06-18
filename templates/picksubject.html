@@ -3,16 +3,24 @@
 <head>
   <title>subject menu</title>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet">
 
 </head>
 <body>
-  <a class="btn" href="/init"><i class="fa-sharp fa-regular fa-arrow-left"></i> back</a>
+  <nav>
+    <div class="left-side">
+      <a class="btn" href="/"><i class="fa-sharp fa-regular fa-arrow-left"></i> back</a>
+    </div>
+    <div class="right-side">
+      <p2 class="animate-charcter">lovelang</p2>
+    </div>
+  </nav>
 
     <div class="container">
         <h2>what will we work on today</h2>
-        <a class="btn" href="{{ request.path }}/practice">practice</a>
-        <a class="btn" href="{{ request.path }}/converse">converse</a>
-        <a class="btn" href="{{ request.path }}/modules">modules</a>
+        <a class="btn" href="{{ request.path }}/practice"><i class="fa-regular fa-earth-americas"></i> practice</a>
+        <a class="btn" href="{{ request.path }}/converse"><i class="fa-regular fa-comments"></i> converse</a>
+        <a class="btn" href="{{ request.path }}/modules"><i class="fa-regular fa-book"></i> modules</a>
     </div>
 </body>
 </html>
