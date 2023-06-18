@@ -8,7 +8,6 @@ from pymongo import MongoClient
 
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.Model.list()
 
 app = Flask(__name__)
 app.config['MONGO_URI'] = os.getenv('MONGO_URI')
