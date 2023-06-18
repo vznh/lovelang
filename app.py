@@ -139,7 +139,7 @@ def listen_for_audio( lang: str, matching: str ) -> bool:
     import speech_recognition as sr
     legend= {
     "English": "en_GB",
-    "Korean": "ko_KR",
+    "Korean": "ko_KR", 
     "Japanese": "ja_JP",
     "Mandarin": "zh_CN",
     "Spanish": "es_ES"
@@ -245,8 +245,11 @@ def speak_syllable_by_syllable(lang: str, sentence: str) -> None:
         pygame.mixer.music.load(filename)
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy() == True:
-            continue
-            os.remove(filename)    
+            continue  
+    
+    # End, remove all syllables
+    for file in files:
+        os.remove(f"syllables/{file}")
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
