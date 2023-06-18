@@ -44,7 +44,7 @@ an array supporting Python that has the syllables such as:
 bibimbap (비빔밥) be-bim-bap
 -> { "be": "Pronounced such as the sentence 'to be'", "bim": "rhyme of dim", "bap": "bab"}
 When returning a value, could you give helpful guides on how to say the syllable in the value portion of the dict such as
-how consonants sound and how vowels sound?
+how consonants and vowels are pronounced?
 
 I will request data like:
 language word
